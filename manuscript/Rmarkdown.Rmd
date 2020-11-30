@@ -1,0 +1,49 @@
+---
+title: Correlación espacial entre las distribuciones de Ectophylla alba y Ficus colubrinae
+  en el Caribe de Costa Rica
+author: "Ian Azofeifa Flores"
+date: "28/11/2020"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 4
+    toc_float:
+      collapsed: no
+      smooth_scroll: no
+---
+
+## 1. Pregunta específica de investigación
+
+La especialización de la dieta puede influir en el rendimiento ecológico de *Ectophylla alba*, el cual se alimenta principalmente del fruto de *Ficus colubrinae*; además de que posiblemente la fragmentación de bosques influencie su distribución espacial, por las características propias de la especie. E. alba se encuentra dentro de la lista roja según la IUCN (IUCN) en la categoría de casi amenazado (Rodriguez-Herrera & Pineda, 2015). Por lo que se plantea la pregunta ¿Cómo influye la presencia de árboles de *Ficus colubrinae* en la distribución biogeográfica de *Ectophylla alba* en Costa Rica?
+
+
+## 2. Variables relevantes
+
+Se tiene la distribucion del F. colubrinae como la variable causa y la distribucion del E. alba como variable respuesta. Ademas se sabe que la distribucion de heliconia tambien se relaciona con la distribucion de E alba, ya que este murcielago usa sus hojas para construir refugio. Sin embargo no se tienen datos de esta variable, por lo que se tomo como una variable no observable. 
+
+```{r}
+library(dagitty)
+library(ggdag)
+
+# crear DAG
+
+g <- dagitty("dag{
+x -> y ; z -> y
+x [exposure]
+y [outcome]
+z [unobserved]
+}")
+
+#Graficar el dag
+
+ggdag(g, layout = "circle") + theme_dag()
+
+```
+
+## 3. ¿De donde vienen los datos?
+
+Se obtuvieron datos para F. colubrinae y E. alba mediante dos repositorios de datos: Infraestructura Mundial de Información en Biodiversidad (GBIF) (GBIF.org, 2020) y el Catálogo del Museo Nacional de Costa Rica (Museo Nacional de Costa Rica, 2020). Ambos repositorios son muestras de museos y herbarios, y cuentan con información sobre el individuo en el momento de la colecta. Se utilizaron únicamente los datos con coordenadas geográficas, o con suficiente información en la descripción del lugar como para otorgarle coordenadas geográficas de forma manual. En el caso de E. alba también se utilizaron datos brindados por el Programa para la Conservación de los Murciélagos de Costa Rica (PCMCR) de sus conteos navideños. Se realizaron mapas para identificar los patrones de distribución y verificar que las muestras se encontraran en su rango natural, para así disminuir el margen de error en la digitalización de los datos. Los datos de F. colubrinae tenian datos de la vertiente del Pacifico, por lo que se realizo manualmente una base de datos con unicamente los datos que correspondian al Caribe, ademas de los de E. alba que se comprobo que estaban en su rango natural. 
+
+## 4. Análisis de los datos
+
+
