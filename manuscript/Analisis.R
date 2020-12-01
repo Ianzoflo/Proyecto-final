@@ -68,4 +68,36 @@ leveneTest(Datos_caribe$LongitudDecimal ~ Datos_caribe$Especie) # Las variacione
 
 # No se pueden realizar pruebas paramatricas al incumplir supuestos de normalidad y varianzas.
 
+####### Analisis de datos
+
+#Cargar datos de E. alba
+library(readr)
+alba <- read_delim("C:/Users/MASTER/Desktop/Proyecto_finalP/Proyecto-final/R/E.alba.csv", 
+                   ";", escape_double = FALSE, col_types = cols(Especie = col_factor(levels = c("Ectophylla_alba")), 
+                                                                LatitudDecimal = col_number(), LongitudDecimal = col_number()), 
+                   trim_ws = TRUE)
+View(alba)
+
+#Cargar datos de F. colubrinae
+colu <- read_delim("C:/Users/MASTER/Desktop/Proyecto_finalP/Proyecto-final/R/F.colubrinae.csv", 
+                   ";", escape_double = FALSE, col_types = cols(Especie = col_factor(levels = c("Ficus_colubrinae")), 
+                                                                LatitudDecimal = col_number(), LongitudDecimal = col_number()), 
+                   trim_ws = TRUE)
+View(colu)
+
+
+
+##### Matrices
+#Matriz para E. alba
+a <- matrix(alba$LatitudDecimal, alba$LongitudDecimal, nrow = 124, ncol = 124)
+#Matriz para F. colubrinae
+c <- matrix(colu$LatitudDecimal, colu$LongitudDecimal, nrow = 124, ncol = 124)
+
+##### Mantel
+
+library (vegan)
+
+mantel.Ecto <-mantel(a, c, method = "pearson", permutations = 999)
+mantel.Ecto
+
 
