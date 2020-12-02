@@ -1,6 +1,5 @@
 ---
-title: Correlación espacial entre las distribuciones de Ectophylla alba y Ficus colubrinae
-  en el Caribe de Costa Rica
+title: Correlación espacial entre la distribución de *Ectophylla* *alba* y *Ficus* *colubrinae* en el Caribe de Costa Rica
 author: "Ian Azofeifa Flores"
 date: "28/11/2020"
 output:
@@ -14,12 +13,12 @@ output:
 
 ## 1. Pregunta específica de investigación
 
-La especialización de la dieta puede influir en el rendimiento ecológico de *Ectophylla alba*, el cual se alimenta principalmente del fruto de *Ficus colubrinae*; además de que posiblemente la fragmentación de bosques influencie su distribución espacial, por las características propias de la especie. E. alba se encuentra dentro de la lista roja según la IUCN (IUCN) en la categoría de casi amenazado (Rodriguez-Herrera & Pineda, 2015). Por lo que se plantea la pregunta ¿Cómo influye la presencia de árboles de *Ficus colubrinae* en la distribución biogeográfica de *Ectophylla alba* en Costa Rica?
+La especialización de la dieta puede influir en el rendimiento ecológico de *Ectophylla alba*, el cual se alimenta principalmente del fruto de *Ficus colubrinae*; aunque también se reporta a *Ficus schippii* como fuente secundaria (Rodríguez-Herrera et al., 2007; Villalobos et al., 2017). Por lo que se plantea la pregunta ¿Cómo influye la presencia de árboles de *Ficus colubrinae* en la distribución biogeográfica de *Ectophylla alba* en Costa Rica?
 
 
 ## 2. Variables relevantes
 
-Se tiene la distribucion del F. colubrinae como la variable causa y la distribucion del E. alba como variable respuesta. Ademas se sabe que la distribucion de heliconia tambien se relaciona con la distribucion de E alba, ya que este murcielago usa sus hojas para construir refugio. Sin embargo no se tienen datos de esta variable, por lo que se tomo como una variable no observable. 
+Se tiene la distribución de *F. colubrinae* como la variable causa y la distribución de *E. alba* como variable respuesta. Además, se sabe que la distribución de *Heliconia sp.* también se relaciona con la distribución de *E. alba*, ya que este murciélago usa sus hojas para construir refugio. Sin embargo no se tienen datos de esta variable, por lo que se tomó como una variable no observable.
 
 ```{r, warning=FALSE, message=FALSE}
 library(dagitty)
@@ -40,13 +39,20 @@ ggdag(g, layout = "circle") + theme_dag()
 
 ```
 
+
+
+**Figura 1.** DAG de interacciones entre variables, se toma la distribución de *E. alba* (y) como variable respuesta, distribución de *F. colubrinae* (x) como variable causa y la presencia de *Heliconia sp.* (z) como variable inobservable. 
+
+Al *Heliconia sp.* ser una variable inobservable, y la distribución de *E. alba* y *F. colubrinae* una relación directa, no es necesario condicionar ninguna variable.
+
 ## 3. ¿De donde vienen los datos?
 
-Se obtuvieron datos para F. colubrinae y E. alba mediante dos repositorios de datos: Infraestructura Mundial de Información en Biodiversidad (GBIF) (GBIF.org, 2020) y el Catálogo del Museo Nacional de Costa Rica (Museo Nacional de Costa Rica, 2020). Ambos repositorios son muestras de museos y herbarios, y cuentan con información sobre el individuo en el momento de la colecta. Se utilizaron únicamente los datos con coordenadas geográficas, o con suficiente información en la descripción del lugar como para otorgarle coordenadas geográficas de forma manual. En el caso de E. alba también se utilizaron datos brindados por el Programa para la Conservación de los Murciélagos de Costa Rica (PCMCR) de sus conteos navideños. Se realizaron mapas para identificar los patrones de distribución y verificar que las muestras se encontraran en su rango natural, para así disminuir el margen de error en la digitalización de los datos. Los datos de F. colubrinae tenian datos de la vertiente del Pacifico, por lo que se realizo manualmente una base de datos con unicamente los datos que correspondian al Caribe, ademas de los de E. alba que se comprobo que estaban en su rango natural. 
+Se obtuvieron datos para *F. colubrinae* y *E. alba* mediante dos repositorios de datos: Infraestructura Mundial de Información en Biodiversidad (GBIF) (GBIF.org, 2020) y el Catálogo del Museo Nacional de Costa Rica (Museo Nacional de Costa Rica, 2020). Ambos repositorios son muestras de museos y herbarios, y cuentan con información sobre el individuo en el momento de la colecta. Se utilizaron únicamente los datos con coordenadas geográficas, o con suficiente información en la descripción del lugar como para otorgarle coordenadas geográficas de forma manual. En el caso de *E. alba* también se utilizaron datos brindados por el Programa para la Conservación de los Murciélagos de Costa Rica (PCMCR) de sus conteos navideños. Se utilizó QGIS (QGIS, 2020) para verificar que las muestras se encontraran en su rango natural, y así disminuir el margen de error. Los datos de *F. colubrinae* tenían datos de la vertiente del Pacifico, por lo que se realizó manualmente una base de datos con únicamente los datos que correspondían al Caribe, además para los de *E. alba* se comprobó si estaban en su rango natural.
+
 
 ## 4. Análisis de los datos
 
-Se realiza un Test de Mantel-Haenszel para matrices iguales, utilizando un coeficiente de correlación de Pearson y 999 permutaciones. Esta prueba consiste en estimar si hay o no correlación, ya sea positiva o negativa, entre dos conjuntos de datos de distancias, en este caso, matrices.
+Se realizó un Test de Mantel-Haenszel para matrices iguales, utilizando un coeficiente de correlación de Pearson y 999 permutaciones. Esta prueba consiste en estimar si hay o no correlación, ya sea positiva o negativa, entre dos conjuntos de datos de distancias, en este caso, matrices.
 
 
 Cargar los datos
@@ -87,10 +93,12 @@ mantel.Ecto
 
 ## Interpretacion de resultados
 
-Al realizar el Test de Mantel-Haenszel para matrices iguales, se obtuvo un coeficiente de correlacion positivo, sin embargo el nivel de significancia fue mayor a 0.05 (r estadístico de Mantel: 0.01779 , significancia: p>0.05; permutaciones= 999). Al tener un valor de r positivo, se interpreta que la correlacion entre las dos variables es directamente proporcional, sin embargo el pvalue nos indica que esta correlacion no es significativa. Esta falta de significancia se puede deber a la falta de relacion entre los datos, ya que al ser datos de diferentes bases limita el estudio en cuanto a la conectividad que se le pueda dar a ambas especies. Es posible que la base datos de F. colubrinae omitiera a muchos individuos presentes en la zona, esto crea un sesgo, pues no se contemplan individuos que puedan esclarecer la relación y dinámica entre ambas especies. Esto se puede argumentar en que la mayoría de las ubicaciones de F. colubrinae y E. alba se traslapan entre si (Fig 1).
-
+Al realizar el Test de Mantel-Haenszel para matrices iguales, se obtuvo un coeficiente de correlación positivo, sin embargo el nivel de significancia fue mayor a 0.05 (r estadístico de Mantel: 0.01779, significancia: p>0.05; permutaciones= 999). Al tener un valor de r positivo, se interpreta que la correlación entre las dos variables es directamente proporcional, sin embargo el pvalue indica que esta correlación no es significativa. Esta falta de significancia se puede deber a la falta de relación entre los datos, ya que al ser datos de diferentes bases limita el estudio en cuanto a la conectividad que se le pueda dar a ambas especies. Es posible que la base datos de *F. colubrinae* omitiera a muchos individuos presentes en la zona, esto crea un sesgo, pues no se contemplan individuos que puedan esclarecer la relación y dinámica entre ambas especies. Sin embargo como se observa en la Fig 2. la mayoría de ubicaciones de *F. colubrinae* coinciden con las ubicaciones de *E. alba*.
 
 ![](distribucion.jpg)
+
+**Figura 2.** Distribución geográfica de colectas para individuos de *Ectophylla alba* (puntos blancos) y *Ficus colubrinae* (puntos rojos) en la vertiente Caribe.
+
 
 
 ## Referencias
@@ -99,7 +107,12 @@ GBIF.org. (2020). Ectophylla alba. GBIF Occurrence. https://www.gbif.org/es/occu
 
 Museo Nacional de Costa Rica. (2020. Ficus colubrinae. Museo Nacional de Costa Rica. https://biodiversidad.museocostarica.go.cr/?coleccion_id=4
 
-Rodriguez-Herrera, B. & Pineda, W. (2015). Ectophylla alba. The IUCN Red List of Threatened Species. https://dx.doi.org/10.2305/IUCN.UK.2015-4.RLTS.T7030A22027138
+QGIS. (2020). QGIS Geografical Information System (Versión 3.12.1-București). GNU. https://qgis.org/es/site/
+
+Rodríguez-Herrera, B., Medellín, R. A., Timm, R. M., & Barquero, K. (2007) Murciélagos neotropicales que acampan en hojas/Neotropical tent-roosting bats. INBio, Heredia, Costa Rica.
+
+Villalobos, D., Spinola, N., Heer, K., Kalko, E. & Rodríguez, B. (2017). Implications of a specialized diet for the foraging behavior of the honduran white bat, Ectophylla alba (Chiroptera: Phyllostomidae). Journal of mammalogy, 98(4), 1193-1201.
+
 
 
 ## Material suplementario
