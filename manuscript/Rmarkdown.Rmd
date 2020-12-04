@@ -1,7 +1,7 @@
 ---
 title: Correlación espacial entre la distribución de *Ectophylla* *alba* y *Ficus* *colubrinae* en el Caribe de Costa Rica
 author: "Ian Azofeifa Flores"
-date: "28/11/2020"
+date: "03/12/2020"
 output:
   html_document:
     toc: yes
@@ -91,7 +91,7 @@ mantel.Ecto
 
 ```
 
-## Interpretacion de resultados
+## 5. Interpretacion de resultados
 
 Al realizar el Test de Mantel-Haenszel para matrices iguales, se obtuvo un coeficiente de correlación positivo, sin embargo el nivel de significancia fue mayor a 0.05 (r estadístico de Mantel: 0.01779, significancia: p>0.05; permutaciones= 999). Al tener un valor de r positivo, se interpreta que la correlación entre las dos variables es directamente proporcional, sin embargo el pvalue indica que esta correlación no es significativa. Esta falta de significancia se puede deber a la falta de relación entre los datos, ya que al ser datos de diferentes bases limita el estudio en cuanto a la conectividad que se le pueda dar a ambas especies. Es posible que la base datos de *F. colubrinae* omitiera a muchos individuos presentes en la zona, esto crea un sesgo, pues no se contemplan individuos que puedan esclarecer la relación y dinámica entre ambas especies. Sin embargo como se observa en la Fig 2. la mayoría de ubicaciones de *F. colubrinae* coinciden con las ubicaciones de *E. alba*.
 
